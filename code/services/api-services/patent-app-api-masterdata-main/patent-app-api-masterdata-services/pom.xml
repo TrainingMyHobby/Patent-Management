@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>tmh-patent-app-api-services</groupId>
-	<artifactId>patent-app-api-masterdata-main</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-
-	<name>patent-app-api-masterdata-main</name>
-	<!-- FIXME change it to the project's website -->
-	<url>http://www.example.com</url>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.9</java.version>
-	</properties>
+	<parent>
+		<artifactId>patent-app-api-masterdata-main</artifactId>
+		<groupId>tmh-patent-app-api-services</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>patent-app-api-masterdata-services</artifactId>
+	<name>patent-app-api-masterdata-services</name>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
+			<groupId>tmh-patent-app-api-services</groupId>
+			<artifactId>patent-app-common-api-services</artifactId>
 		</dependency>
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>tmh-patent-app-api-services</groupId>
-				<artifactId>patent-app-common-api-services</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
@@ -78,8 +62,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<packaging>pom</packaging>
-  <modules>
-    <module>patent-app-api-masterdata-services</module>
-  </modules>
 </project>
