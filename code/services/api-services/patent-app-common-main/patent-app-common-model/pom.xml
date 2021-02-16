@@ -4,16 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>patent-app-api-masterdata-main</artifactId>
+		<artifactId>patent-app-common-main</artifactId>
 		<groupId>tmh-patent-app-api-services</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>patent-app-api-masterdata-services</artifactId>
-	<name>patent-app-api-masterdata-services</name>
-	<dependencies>
-		<dependency>
-			<groupId>tmh-patent-app-api-services</groupId>
-			<artifactId>patent-app-common-api-services</artifactId>
-		</dependency>
-	</dependencies>
+	<artifactId>patent-app-common-model</artifactId>
+	<name>patent-app-common-model</name>
 </project>
