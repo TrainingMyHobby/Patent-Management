@@ -19,5 +19,6 @@ public class AppCrudResponse<T> extends AppResponse {
 
 	private T model;
 	private List<T> models;
+	private Iterable<T> modelsItr;
 
 }

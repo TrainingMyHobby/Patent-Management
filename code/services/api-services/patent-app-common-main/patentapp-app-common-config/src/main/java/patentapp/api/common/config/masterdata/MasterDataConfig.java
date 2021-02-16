@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		"patentapp.api.masterdata.services", "patentapp.common.controller.crud.masterdata",
 		"patentapp.common.services.crud.masterdata", "patentapp.common.dao.crud.masterdata" })
 @EntityScan(basePackages = { "patentapp.common.model.masterdata", "patentapp.common.model.common" })
-@EnableJpaRepositories(basePackages = { "patentapp.api.masterdata.dao", "patentapp.common.dao.common" })
+@EnableJpaRepositories(basePackages = { "patentapp.api.masterdata.dao", "patentapp.common.dao.common",
+		"patentapp.common.dao.crud.masterdata" })
 @EnableTransactionManagement
 public class MasterDataConfig {
 
