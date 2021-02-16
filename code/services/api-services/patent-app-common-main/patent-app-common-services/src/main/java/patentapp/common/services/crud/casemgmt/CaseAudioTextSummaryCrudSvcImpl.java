@@ -6,6 +6,7 @@ import patentapp.common.model.casemgmt.CaseAudioTextSummary;
 import patentapp.common.services.common.BaseModelCrudSvcImpl;
 
 @Service
-public class CaseAudioTextSummaryCrudSvcImpl extends BaseModelCrudSvcImpl<CaseAudioTextSummary> {
+public class CaseAudioTextSummaryCrudSvcImpl extends BaseModelCrudSvcImpl<CaseAudioTextSummary>
+		implements CaseAudioTextSummaryCrudSvc {
 
 }
