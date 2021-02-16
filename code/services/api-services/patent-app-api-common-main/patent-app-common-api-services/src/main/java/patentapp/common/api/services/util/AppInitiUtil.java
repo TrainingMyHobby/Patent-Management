@@ -7,7 +7,7 @@ public class AppInitiUtil {
 
 	public static String[] buildApiServicesAddlProfiles(String[] inputProfiles) {
 
-		String[] finalProfiles = { "api-db" };
+		String[] finalProfiles = { "api-default-db" };
 
 		String[] both = Stream.concat(Arrays.stream(inputProfiles), Arrays.stream(finalProfiles))
 				.toArray(String[]::new);

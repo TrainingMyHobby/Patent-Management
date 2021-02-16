@@ -19,13 +19,6 @@
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter-sql-mysql -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-			<version>${spring.cloud.gcp.version}</version>
-			<!-- <scope>provided</scope> -->
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -74,5 +67,35 @@
 			<version>2.3.1</version>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>api-default-db</value>
+				</property>
+			</activation>
+		</profile>
+		<profile>
+			<id>gcp-sql-db</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profile.from.maven />
+			</properties>
+			<dependencies>
+				<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-gcp-starter-sql-mysql -->
+				<dependency>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+					<version>${spring.cloud.gcp.version}</version>
+					<!-- <scope>provided</scope> -->
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 
 </project>

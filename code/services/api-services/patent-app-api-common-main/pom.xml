@@ -78,4 +78,16 @@
 	<modules>
 		<module>patent-app-common-api-services</module>
 	</modules>
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>spring.profiles.active</name>
+					<value>api-default-db</value>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
 </project>
