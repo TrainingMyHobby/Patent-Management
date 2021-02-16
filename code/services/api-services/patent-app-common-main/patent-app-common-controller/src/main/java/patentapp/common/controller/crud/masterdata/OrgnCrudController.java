@@ -14,6 +14,7 @@ public class OrgnCrudController extends BaseNameDescCrudController<Organization>
 
 	public OrgnCrudController(@Autowired OrgCrudSvc crudSvc) {
 		super.setBaseModelCrudSvc(crudSvc);
+		super.setClassObj(Organization.class);
 	}
 
 }

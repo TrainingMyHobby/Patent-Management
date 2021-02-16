@@ -1,24 +1,27 @@
 package patentapp.common.controller.crud;
 
-import java.lang.reflect.ParameterizedType;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.Getter;
+import lombok.Setter;
 import patentapp.common.dto.AppCrudRequest;
 import patentapp.common.dto.AppCrudResponse;
 import patentapp.common.model.common.BaseModel;
 import patentapp.common.services.common.BaseModelCrudSvc;
 import patentapp.common.utils.AppConfigUtil;
 
+@Getter
+@Setter
 public class BaseCrudController<T extends BaseModel> {
 
 	@Autowired
 	protected AppConfigUtil appConfigUtil;
 
 	private BaseModelCrudSvc<T> crudSvc;
+	private Class<T> classObj;
 
 	public void setBaseModelCrudSvc(BaseModelCrudSvc<T> crudSvc) {
 		this.crudSvc = crudSvc;
@@ -59,7 +62,6 @@ public class BaseCrudController<T extends BaseModel> {
 		return ResponseEntity.ok(resp);
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "populate-initial-data")
 	public ResponseEntity<AppCrudResponse<T>> populateInitialData(
 			@RequestBody(required = false) AppCrudRequest<T> crudReq) throws Exception {
@@ -68,14 +70,15 @@ public class BaseCrudController<T extends BaseModel> {
 			crudReq = new AppCrudRequest<T>();
 		}
 
-		Class<T> modelClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
-				.getActualTypeArguments()[0];
-		String modelClassName = modelClass.getSimpleName();
+//		Class<T> modelClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
+//				.getActualTypeArguments()[0];
+		// String modelClassName = modelClass.getSimpleName();
+		String modelClassName = this.classObj.getSimpleName();
 
 		String filePath = this.appConfigUtil.getModelInitialDataJSsonFilePath(modelClassName);
 		crudReq.setInitialDataJsonFilePath(modelClassName, filePath);
 
-		AppCrudResponse<T> resp = this.crudSvc.populateInitialData(modelClassName, crudReq);
+		AppCrudResponse<T> resp = this.crudSvc.populateInitialData(modelClassName, crudReq, this.classObj);
 		return ResponseEntity.ok(resp);
 	}
 

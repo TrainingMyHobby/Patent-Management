@@ -61,16 +61,23 @@ public interface BaseModelCrudSvc<T extends BaseModel> {
 		return resp;
 	}
 
-	default AppCrudResponse<T> populateInitialData(String modelClassName, AppCrudRequest<T> crudReq) throws Exception {
+	default AppCrudResponse<T> populateInitialData(String modelClassName, AppCrudRequest<T> crudReq, Class<T> classObj)
+			throws Exception {
 
 		List<T> modelObjs = AppJsonUtil
-				.<T>convertModelJsonDataToModelObj(crudReq.getInitialDataJsonFilePath(modelClassName));
+				.<T>convertModelJsonDataToModelObj(crudReq.getInitialDataJsonFilePath(modelClassName), classObj);
+
+		
 
 		if (modelObjs != null && modelObjs.size() > 0) {
+			
 			AppCrudRequest<T> crudReq2 = new AppCrudRequest<T>();
+			
 			modelObjs.forEach(modelObj -> {
 
-				crudReq.setModel(modelObj);
+				System.out.println("modelObj " + modelObj);
+				
+				crudReq2.setModel(modelObj);
 				try {
 
 					this.createModel(crudReq2);
