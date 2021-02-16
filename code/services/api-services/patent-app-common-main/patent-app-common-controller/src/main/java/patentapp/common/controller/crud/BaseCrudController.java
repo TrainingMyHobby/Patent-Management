@@ -1,14 +1,22 @@
 package patentapp.common.controller.crud;
 
+import java.lang.reflect.ParameterizedType;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import patentapp.common.dto.AppCrudRequest;
 import patentapp.common.dto.AppCrudResponse;
 import patentapp.common.model.common.BaseModel;
 import patentapp.common.services.common.BaseModelCrudSvc;
+import patentapp.common.utils.AppConfigUtil;
 
 public class BaseCrudController<T extends BaseModel> {
+
+	@Autowired
+	protected AppConfigUtil appConfigUtil;
 
 	private BaseModelCrudSvc<T> crudSvc;
 
@@ -17,50 +25,56 @@ public class BaseCrudController<T extends BaseModel> {
 	}
 
 	@RequestMapping(path = "create")
-	public ResponseEntity<AppCrudResponse<T>> createModel(AppCrudRequest<T> crudReq) throws Exception {
+	public ResponseEntity<AppCrudResponse<T>> createModel(@RequestBody AppCrudRequest<T> crudReq) throws Exception {
 
-		this.crudSvc.createModel(crudReq);
-		
-		AppCrudResponse<T> resp = new AppCrudResponse<T>();
-
+		AppCrudResponse<T> resp = this.crudSvc.createModel(crudReq);
 		return ResponseEntity.ok(resp);
 	}
 
 	@RequestMapping(path = "update")
 	public ResponseEntity<AppCrudResponse<T>> updateModel(AppCrudRequest<T> crudReq) throws Exception {
-		
-		this.crudSvc.updateModel(crudReq);
 
-		AppCrudResponse<T> resp = new AppCrudResponse<T>();
-
+		AppCrudResponse<T> resp = this.crudSvc.updateModel(crudReq);
 		return ResponseEntity.ok(resp);
 	}
 
 	@RequestMapping(path = "delete")
 	public ResponseEntity<AppCrudResponse<T>> deleteModel(AppCrudRequest<T> crudReq) throws Exception {
 
-		AppCrudResponse<T> resp = new AppCrudResponse<T>();
-
+		AppCrudResponse<T> resp = this.crudSvc.deleteModel(crudReq);
 		return ResponseEntity.ok(resp);
 	}
 
 	@RequestMapping(path = "get-by-pk")
-	public ResponseEntity<AppCrudResponse<T>> getModelByPk(AppCrudRequest<T> crudReq) throws Exception {
+	public ResponseEntity<AppCrudResponse<T>> getModelByPk(@RequestBody AppCrudRequest<T> crudReq) throws Exception {
 
-		this.crudSvc.getModelByPk(crudReq);
-		
-		AppCrudResponse<T> resp = new AppCrudResponse<T>();
-
+		AppCrudResponse<T> resp = this.crudSvc.getModelByPk(crudReq);
 		return ResponseEntity.ok(resp);
 	}
 
 	@RequestMapping(path = "getall")
-	public ResponseEntity<AppCrudResponse<T>> getAllModels(AppCrudRequest<T> crudReq) throws Exception {
-		
-		this.crudSvc.getAllModels(crudReq);
+	public ResponseEntity<AppCrudResponse<T>> getAllModels(@RequestBody AppCrudRequest<T> crudReq) throws Exception {
 
-		AppCrudResponse<T> resp = new AppCrudResponse<T>();
+		AppCrudResponse<T> resp = this.crudSvc.getAllModels(crudReq);
+		return ResponseEntity.ok(resp);
+	}
 
+	@SuppressWarnings("unchecked")
+	@RequestMapping(path = "populate-initial-data")
+	public ResponseEntity<AppCrudResponse<T>> populateInitialData(
+			@RequestBody(required = false) AppCrudRequest<T> crudReq) throws Exception {
+
+		if (crudReq == null) {
+			crudReq = new AppCrudRequest<T>();
+		}
+
+		Class<T> modelClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
+				.getActualTypeArguments()[0];
+
+		String filePath = this.appConfigUtil.getModelInitialDataJSsonFilePath(modelClass.getName());
+		crudReq.setInitialDataJsonFilePath(filePath);
+
+		AppCrudResponse<T> resp = this.crudSvc.populateInitialData(crudReq);
 		return ResponseEntity.ok(resp);
 	}
 

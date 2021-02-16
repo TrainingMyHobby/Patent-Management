@@ -29,4 +29,16 @@ public class AppCtxData {
 		return this.ctxData.get(key);
 	}
 
+	public String getValueAsStr(String key) {
+		return (String) this.ctxData.get(key);
+	}
+
+	public String getInitialDataJsonFilePath() {
+		return this.getValueAsStr("initial_data_json_file_path");
+	}
+
+	public void setInitialDataJsonFilePath(String value) {
+		this.ctxData.put("initial_data_json_file_path", value);
+	}
+
 }
