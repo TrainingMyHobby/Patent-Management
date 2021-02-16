@@ -10,4 +10,11 @@
 	</parent>
 	<artifactId>patent-app-common-dao</artifactId>
 	<name>patent-app-common-dao</name>
+	<dependencies>
+		<dependency>
+			<groupId>tmh-patent-app-api-services</groupId>
+			<artifactId>patent-app-common-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

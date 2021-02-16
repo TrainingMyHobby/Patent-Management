@@ -8,13 +8,6 @@
 		<groupId>tmh-patent-app-api-services</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>patent-app-common-model</artifactId>
-	<name>patent-app-common-model</name>
-	<dependencies>
-		<dependency>
-			<groupId>tmh-patent-app-api-services</groupId>
-			<artifactId>patent-app-common</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
+	<artifactId>patent-app-common</artifactId>
+	<name>patent-app-common</name>
 </project>

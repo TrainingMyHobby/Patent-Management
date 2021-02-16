@@ -1,4 +1,4 @@
-package patentapp.common.model;
+package patentapp.common;
 
 /**
  * Hello world!

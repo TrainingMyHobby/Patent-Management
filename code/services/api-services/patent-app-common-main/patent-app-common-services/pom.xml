@@ -11,4 +11,11 @@
 	<artifactId>patent-app-common-services</artifactId>
 	<name>patent-app-common-services</name>
 
+	<dependencies>
+		<dependency>
+			<groupId>tmh-patent-app-api-services</groupId>
+			<artifactId>patent-app-common-dao</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

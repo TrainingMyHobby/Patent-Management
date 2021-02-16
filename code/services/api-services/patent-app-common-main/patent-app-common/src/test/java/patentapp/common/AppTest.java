@@ -1,4 +1,4 @@
-package patentapp.common.model;
+package patentapp.common;
 
 import static org.junit.Assert.assertTrue;
 
