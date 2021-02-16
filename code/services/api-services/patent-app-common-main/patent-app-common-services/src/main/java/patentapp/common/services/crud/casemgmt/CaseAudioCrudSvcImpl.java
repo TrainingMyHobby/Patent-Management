@@ -2,10 +2,10 @@ package patentapp.common.services.crud.casemgmt;
 
 import org.springframework.stereotype.Service;
 
-import patentapp.common.model.casemgmt.CaseInfo;
+import patentapp.common.model.casemgmt.CaseAudio;
 import patentapp.common.services.common.BaseModelCrudSvcImpl;
 
 @Service
-public class CaseInfoCrudSvcImpl extends BaseModelCrudSvcImpl<CaseInfo> implements CaseInfoCrudSvc {
+public class CaseAudioCrudSvcImpl extends BaseModelCrudSvcImpl<CaseAudio> {
 
 }

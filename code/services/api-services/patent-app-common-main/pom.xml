@@ -66,11 +66,11 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
+		<module>patent-app-common</module>
 		<module>patent-app-common-model</module>
 		<module>patent-app-common-dao</module>
 		<module>patent-app-common-services</module>
 		<module>patent-app-common-controller</module>
-		<module>patent-app-common</module>
 		<module>patentapp-app-common-config</module>
 	</modules>
 </project>
