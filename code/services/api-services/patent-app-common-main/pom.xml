@@ -46,6 +46,23 @@
 				<artifactId>spring-boot-starter</artifactId>
 				<version>2.4.2</version>
 			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>2.4.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>2.2.6.RELEASE</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>5.3.3</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<modules>
@@ -54,5 +71,6 @@
 		<module>patent-app-common-services</module>
 		<module>patent-app-common-controller</module>
 		<module>patent-app-common</module>
+		<module>patentapp-app-common-config</module>
 	</modules>
 </project>

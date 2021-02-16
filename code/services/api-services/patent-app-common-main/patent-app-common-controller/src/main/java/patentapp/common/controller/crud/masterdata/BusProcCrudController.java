@@ -1,4 +1,4 @@
-package patentapp.api.masterdata.services.controller;
+package patentapp.common.controller.crud.masterdata;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

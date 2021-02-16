@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
-import patentapp.api.masterdata.services.config.MasterDataConfig;
+import patentapp.api.common.config.masterdata.MasterDataConfig;
 import patentapp.common.api.services.util.AppInitiUtil;
 
 @SpringBootApplication

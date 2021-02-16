@@ -15,9 +15,5 @@
 			<groupId>tmh-patent-app-api-services</groupId>
 			<artifactId>patent-app-common-api-services</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>tmh-patent-app-api-services</groupId>
-			<artifactId>patent-app-common-controller</artifactId>
-		</dependency>
 	</dependencies>
 </project>
