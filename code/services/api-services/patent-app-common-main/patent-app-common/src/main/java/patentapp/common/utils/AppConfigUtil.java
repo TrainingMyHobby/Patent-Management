@@ -19,7 +19,7 @@ public class AppConfigUtil {
 	}
 
 	public String getModelInitialDataJSsonFilePath(String modelName) {
-		return this.getProperty("model_initial_data_json_path_" + modelName, null);
+		return this.getProperty("initial_data_json_file_path_" + modelName, null);
 	}
 
 }

@@ -33,12 +33,12 @@ public class AppCtxData {
 		return (String) this.ctxData.get(key);
 	}
 
-	public String getInitialDataJsonFilePath() {
-		return this.getValueAsStr("initial_data_json_file_path");
+	public String getInitialDataJsonFilePath(String modelClassName) {
+		return this.getValueAsStr("initial_data_json_file_path_" + modelClassName);
 	}
 
-	public void setInitialDataJsonFilePath(String value) {
-		this.ctxData.put("initial_data_json_file_path", value);
+	public void setInitialDataJsonFilePath(String modelClassName, String value) {
+		this.ctxData.put("initial_data_json_file_path_" + modelClassName, value);
 	}
 
 }

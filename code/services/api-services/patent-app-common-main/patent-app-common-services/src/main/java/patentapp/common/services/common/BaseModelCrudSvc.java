@@ -6,6 +6,7 @@ import patentapp.common.dao.crud.BaseModelCrudDAO;
 import patentapp.common.dto.AppCrudRequest;
 import patentapp.common.dto.AppCrudResponse;
 import patentapp.common.model.common.BaseModel;
+import patentapp.common.utils.AppJsonUtil;
 
 public interface BaseModelCrudSvc<T extends BaseModel> {
 
@@ -60,22 +61,25 @@ public interface BaseModelCrudSvc<T extends BaseModel> {
 		return resp;
 	}
 
-	default AppCrudResponse<T> populateInitialData(AppCrudRequest<T> crudReq) throws Exception {
+	default AppCrudResponse<T> populateInitialData(String modelClassName, AppCrudRequest<T> crudReq) throws Exception {
 
-		List<T> modelObjs = BaseModel.convertModelJsonDataToModelObj(crudReq.getInitialDataJsonFilePath(), null);
+		List<T> modelObjs = AppJsonUtil
+				.<T>convertModelJsonDataToModelObj(crudReq.getInitialDataJsonFilePath(modelClassName));
 
-		AppCrudRequest<T> crudReq2 = new AppCrudRequest<T>();
-		modelObjs.forEach(modelObj -> {
+		if (modelObjs != null && modelObjs.size() > 0) {
+			AppCrudRequest<T> crudReq2 = new AppCrudRequest<T>();
+			modelObjs.forEach(modelObj -> {
 
-			crudReq.setModel(modelObj);
-			try {
-				
-				this.createModel(crudReq2);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
+				crudReq.setModel(modelObj);
+				try {
+
+					this.createModel(crudReq2);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		}
 
 		AppCrudResponse<T> resp = new AppCrudResponse<T>();
 

@@ -70,11 +70,12 @@ public class BaseCrudController<T extends BaseModel> {
 
 		Class<T> modelClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
 				.getActualTypeArguments()[0];
+		String modelClassName = modelClass.getSimpleName();
 
-		String filePath = this.appConfigUtil.getModelInitialDataJSsonFilePath(modelClass.getName());
-		crudReq.setInitialDataJsonFilePath(filePath);
+		String filePath = this.appConfigUtil.getModelInitialDataJSsonFilePath(modelClassName);
+		crudReq.setInitialDataJsonFilePath(modelClassName, filePath);
 
-		AppCrudResponse<T> resp = this.crudSvc.populateInitialData(crudReq);
+		AppCrudResponse<T> resp = this.crudSvc.populateInitialData(modelClassName, crudReq);
 		return ResponseEntity.ok(resp);
 	}
 
