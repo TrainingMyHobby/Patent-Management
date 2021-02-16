@@ -1,5 +1,7 @@
 package patentapp.common.services.common;
 
+import java.util.List;
+
 import patentapp.common.dao.crud.BaseModelCrudDAO;
 import patentapp.common.dto.AppCrudRequest;
 import patentapp.common.dto.AppCrudResponse;
@@ -59,6 +61,21 @@ public interface BaseModelCrudSvc<T extends BaseModel> {
 	}
 
 	default AppCrudResponse<T> populateInitialData(AppCrudRequest<T> crudReq) throws Exception {
+
+		List<T> modelObjs = BaseModel.convertModelJsonDataToModelObj(crudReq.getInitialDataJsonFilePath(), null);
+
+		AppCrudRequest<T> crudReq2 = new AppCrudRequest<T>();
+		modelObjs.forEach(modelObj -> {
+
+			crudReq.setModel(modelObj);
+			try {
+				
+				this.createModel(crudReq2);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 
 		AppCrudResponse<T> resp = new AppCrudResponse<T>();
 
