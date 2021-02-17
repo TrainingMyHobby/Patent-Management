@@ -20,7 +20,23 @@
 			<artifactId>patent-app-api-casemgmt-insights</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 	</build>
+	<profiles>
+		<profile>
+			<id>casemgnt-events-gcp</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>tmh-patent-app-api-services</groupId>
+					<artifactId>patent-app-events-audvid-gcp</artifactId>
+					<version>${project.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 </project>

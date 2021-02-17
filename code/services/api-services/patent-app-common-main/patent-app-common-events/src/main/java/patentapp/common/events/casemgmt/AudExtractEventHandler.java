@@ -6,7 +6,4 @@ import patentapp.common.events.common.AppEventReqHandler;
 
 public interface AudExtractEventHandler extends AppEventReqHandler<AppEventReq, AppEventResp> {
 
-	default String getHandlerName() {
-		return "AudExtractEventHandler";
-	}
 }

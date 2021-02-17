@@ -2,6 +2,7 @@ package patentapp.api.casemgmt.insights.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class CaseInsightsController {
 	private CaseEventsHandler caseEvtHandler;
 
 	@RequestMapping("insights-event-request")
-	public ResponseEntity<AppResponse> insightEventRequest(AppEventReq eventReq) throws Exception {
+	public ResponseEntity<AppResponse> insightEventRequest(@RequestBody AppEventReq eventReq) throws Exception {
 
 		eventReq.addPayLoadData(EventConstants.KEY_PK, eventReq.getPk());
 		this.caseEvtHandler.publishCaseEvent(eventReq);
