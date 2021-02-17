@@ -8,19 +8,13 @@
 		<groupId>tmh-patent-app-api-services</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>patent-app-api-casemgmt-services</artifactId>
-	<name>patent-app-api-casemgmt-services</name>
+	<artifactId>patent-app-api-casemgmt-insights</artifactId>
+	<name>patent-app-api-casemgmt-insights</name>
 	<dependencies>
 		<dependency>
 			<groupId>tmh-patent-app-api-services</groupId>
 			<artifactId>patent-app-common-api-services</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>tmh-patent-app-api-services</groupId>
-			<artifactId>patent-app-api-casemgmt-insights</artifactId>
-			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	<build>
-	</build>
 </project>

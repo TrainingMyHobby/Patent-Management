@@ -11,4 +11,6 @@ import patentapp.common.model.common.BaseNameDescModel;
 @ToString(includeFieldNames = true, callSuper = true, doNotUseGetters = true)
 public class CaseAudioText extends BaseNameDescModel {
 
+	public static final String BEAN_ID = "CaseAudioText";
+
 }

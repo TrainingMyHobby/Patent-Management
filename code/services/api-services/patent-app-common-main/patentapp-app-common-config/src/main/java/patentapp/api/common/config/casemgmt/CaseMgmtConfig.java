@@ -11,7 +11,7 @@ import patentapp.api.common.config.common.ApiServicesCommonConfig;
 @Configuration
 @ComponentScan(basePackages = { "patentapp.api.common.config.casemgmt", "patentapp.api.casemgmt.services",
 		"patentapp.common.controller.crud.casemgmt", "patentapp.common.services.crud.casemgmt",
-		"patentapp.common.dao.crud.casemgmt" })
+		"patentapp.common.dao.crud.casemgmt", "patentapp.common.events.casemgmt", "patentapp.api.casemgmt.insights" })
 @EntityScan(basePackages = { "patentapp.common.model.casemgmt", "patentapp.common.model.common" })
 @EnableJpaRepositories(basePackages = { "patentapp.api.casemgmt.dao", "patentapp.common.dao.crud.casemgmt" })
 @Import(ApiServicesCommonConfig.class)

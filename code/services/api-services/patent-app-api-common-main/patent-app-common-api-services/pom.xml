@@ -72,6 +72,11 @@
 			<artifactId>patent-app-common-controller</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>tmh-patent-app-api-services</groupId>
+			<artifactId>patent-app-common-events</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 	<profiles>
 		<profile>
