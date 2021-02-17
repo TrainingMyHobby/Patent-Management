@@ -14,6 +14,5 @@
 	</dependencies>
 	<packaging>pom</packaging>
 	<modules>
-		<module>patent-app-events-casemgmt-audivid</module>
 	</modules>
 </project>
