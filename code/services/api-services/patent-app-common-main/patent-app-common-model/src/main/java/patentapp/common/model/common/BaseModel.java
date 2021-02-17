@@ -39,4 +39,7 @@ public class BaseModel {
 	@Version
 	private Long version;
 
+	@Column(name = "hierarchy", nullable = true)
+	private Integer hierarchy;
+
 }
